@@ -144,7 +144,7 @@ lexer = patok {
 	op  = '[+*]',
 	num = '%d+',
 	ws  = '%s+',
-}
+}()
 ```
 
 We could have also made special lexemes for `+` and `*` individually.

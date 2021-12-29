@@ -245,7 +245,7 @@ expr = add
 
 And now we can use the parser!
 ```lua
-eind, out = pm.parse("10 + 5 * 2 + 10", lexer, expr) -- 14, 30
+out, endindex, finalindex = pm.parse("10 + 5 * 2 + 10", lexer, expr) -- 14, 30
 ```
 
 ### Missing

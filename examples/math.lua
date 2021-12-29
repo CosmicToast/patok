@@ -59,5 +59,5 @@ else
 	test = [[10 + 5 * 2 + 10]]
 end
 
-local eind, out = pm.parse(test, lexer, expr)
-print(eind, out)
+local out, eind, find = pm.parse(test, lexer, expr)
+print(out, eind, find)

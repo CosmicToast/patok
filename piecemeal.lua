@@ -101,6 +101,12 @@ return {
 			next = lexer:next()
 			if next then table.insert(tokens, next) end
 		until next == nil
-		return parser(tokens, 1)
+		local eind, out = parser(tokens, 1)
+		-- a successful parse means eind is >1 the length of tokens
+		if tokens[eind] then -- so this is unsuccessful
+			return out, tokens[eind-1].stop, tokens[eind].start
+		else -- and this is
+			return out, tokens[eind-1].stop, nil
+		end
 	end,
 }

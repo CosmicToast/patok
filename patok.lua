@@ -2,7 +2,7 @@ local meta = {}
 function meta:__call(p)
 	if p == nil then return self.out end
 	for k, v in pairs(p) do
-		table.insert(self.out.tokens, {name=k, pattern=v})
+		table.insert(self.out.tokens, {name=k, pattern='^' .. v})
 	end
 	return self
 end

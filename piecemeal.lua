@@ -5,6 +5,17 @@
 ]]--
 
 return {
+	eof = function ()
+		return function (l, i)
+			-- we don't have to, but we advance the pointer by one
+			-- this prevents infinite looping
+			if #l+1 == i then
+				local pos = l[#l].stop + 1
+				return i+1, {type = 'EOF', value = '', start = pos, stop = pos}
+			end
+			return nil
+		end
+	end,
 	lexeme = function (type)
 		return function (l, i)
 			if l[i] and l[i].type == type then
@@ -102,11 +113,11 @@ return {
 			if next then table.insert(tokens, next) end
 		until next == nil
 		local eind, out = parser(tokens, 1)
-		-- a successful parse means eind is >1 the length of tokens
-		if tokens[eind] then -- so this is unsuccessful
+		-- a successful parse means eind is > the length of tokens
+		if eind > #tokens then
+			return out, tokens[#tokens].stop, nil
+		else -- TODO: what if eind == 1? can that happen?
 			return out, tokens[eind-1].stop, tokens[eind].start
-		else -- and this is
-			return out, tokens[eind-1].stop, nil
 		end
 	end,
 }

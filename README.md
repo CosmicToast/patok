@@ -117,6 +117,7 @@ The end result is a parser that parses your entire document on demand.
 Piecemeal provides the following built-in functions:
 * lexeme: lexeme looks for a "type" of token produced by patok
 * value: value looks for an exact match of a token's text
+* eof: only matches at the end of (lexed) input exactly once
 * all: takes a list of parsers, producing a parser for all of them in a row
 * alt: takes a list of parsers,
   producing a parser that looks for any one of its inputs (in order)

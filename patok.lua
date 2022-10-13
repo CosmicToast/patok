@@ -1,5 +1,5 @@
-local id = function(in) return function() return in end end
-local pa = function(pt) return function(in) return in:find(pt) end
+local id = function(ip) return function() return ip end end
+local pa = function(pt) return function(ip) return ip:find(pt) end end
 
 local meta = {}
 function meta:__call(p)

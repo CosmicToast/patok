@@ -46,7 +46,7 @@ function new (p)
 							stop  = out[2],
 							value = string.sub(self.input, out[1], out[2])
 						}
-						if v.drop(match.value) then return self.next() end -- skip this one
+						if v.drop(match.value) then return self:next() end -- skip this one
 						return match
 					end
 				end
